@@ -1,0 +1,71 @@
+;; zone home.arpa
+$ORIGIN .
+arr.home.arpa	3600	IN	A	10.140.3.14
+dns.home.arpa	3600	IN	A	10.140.3.53
+dns.home.arpa	3600	IN	AAAA	fd66:140:0:3::53
+gpu-debian.home.arpa	3600	IN	A	10.140.2.60
+gw.home.arpa	3600	IN	CNAME	vyos.home.arpa.
+laptop.home.arpa	3600	IN	A	10.140.1.2
+loud-machine.home.arpa	3600	IN	A	10.140.2.2
+navidrome.home.arpa	3600	IN	A	10.140.3.12
+navidrome.home.arpa	3600	IN	AAAA	fd66:140:0:3::12
+phone.home.arpa	3600	IN	A	10.140.1.3
+pi400.home.arpa	3600	IN	A	10.140.2.3
+presence.home.arpa	3600	IN	A	10.140.3.17
+presence.home.arpa	3600	IN	AAAA	fd66:140:0:3::17
+proxy.home.arpa	3600	IN	A	10.140.3.16
+proxy.home.arpa	3600	IN	AAAA	fd66:140:0:3::16
+pterodactyl.home.arpa	3600	IN	A	10.140.3.15
+pterodactyl.home.arpa	3600	IN	AAAA	fd66:140:0:3::15
+home.arpa	3600	IN	NS	dns.home.arpa.
+home.arpa	3600	IN	SOA	dns.home.arpa hostmaster.home.arpa 2026102803 10800 3600 604800 3600
+soulseek.home.arpa	3600	IN	A	10.140.3.11
+soulseek.home.arpa	3600	IN	AAAA	fd66:140:0:3::11
+t480.home.arpa	3600	IN	A	10.140.2.101
+t480.home.arpa	3600	IN	AAAA	fd66:140:0:2::101
+torrent.home.arpa	3600	IN	A	10.140.3.10
+torrent.home.arpa	3600	IN	AAAA	fd66:140:0:3::10
+vyos.home.arpa	3600	IN	A	10.140.2.1
+vyos.home.arpa	3600	IN	AAAA	fd66:140:0:2::1
+windows.home.arpa	3600	IN	A	10.140.3.13
+z440.home.arpa	3600	IN	A	10.140.2.100
+z440.home.arpa	3600	IN	AAAA	fd66:140:0:2::100
+;; zone 140.10.in-addr.arpa
+$ORIGIN .
+1.1.140.10.in-addr.arpa	3600	IN	PTR	vyos.home.arpa
+1.2.140.10.in-addr.arpa	3600	IN	PTR	vyos.home.arpa
+1.3.140.10.in-addr.arpa	3600	IN	PTR	vyos.home.arpa
+10.3.140.10.in-addr.arpa	3600	IN	PTR	torrent.home.arpa
+100.2.140.10.in-addr.arpa	3600	IN	PTR	z440.home.arpa
+101.2.140.10.in-addr.arpa	3600	IN	PTR	t480.home.arpa
+11.3.140.10.in-addr.arpa	3600	IN	PTR	soulseek.home.arpa
+12.3.140.10.in-addr.arpa	3600	IN	PTR	navidrome.home.arpa
+13.3.140.10.in-addr.arpa	3600	IN	PTR	windows.home.arpa
+14.3.140.10.in-addr.arpa	3600	IN	PTR	arr.home.arpa
+140.10.in-addr.arpa	3600	IN	NS	dns.home.arpa.
+140.10.in-addr.arpa	3600	IN	SOA	dns.home.arpa hostmaster.home.arpa 2026102801 10800 3600 604800 3600
+15.3.140.10.in-addr.arpa	3600	IN	PTR	pterodactyl.home.arpa
+16.3.140.10.in-addr.arpa	3600	IN	PTR	proxy.home.arpa
+17.3.140.10.in-addr.arpa	3600	IN	PTR	presence.home.arpa
+2.1.140.10.in-addr.arpa	3600	IN	PTR	laptop.home.arpa
+2.2.140.10.in-addr.arpa	3600	IN	PTR	loud-machine.home.arpa
+3.1.140.10.in-addr.arpa	3600	IN	PTR	phone.home.arpa
+3.2.140.10.in-addr.arpa	3600	IN	PTR	pi400.home.arpa
+53.3.140.10.in-addr.arpa	3600	IN	PTR	dns.home.arpa
+60.2.140.10.in-addr.arpa	3600	IN	PTR	gpu-debian.home.arpa
+;; zone 0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa
+$ORIGIN .
+0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	NS	dns.home.arpa.
+0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	SOA	dns.home.arpa hostmaster.home.arpa 2026102801 10800 3600 604800 3600
+0.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	z440.home.arpa
+0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	torrent.home.arpa
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	vyos.home.arpa
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	vyos.home.arpa
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	vyos.home.arpa
+1.0.1.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	t480.home.arpa
+1.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	soulseek.home.arpa
+2.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	navidrome.home.arpa
+3.5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	dns.home.arpa
+5.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	pterodactyl.home.arpa
+6.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	proxy.home.arpa
+7.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.3.0.0.0.0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa	3600	IN	PTR	presence.home.arpa

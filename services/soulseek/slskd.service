@@ -1,0 +1,13 @@
+[Unit]
+Description=slskd
+After=network-online.target
+
+[Service]
+User=media
+Group=media
+ExecStart=/opt/slskd/slskd --app-dir /home/media/slskd
+Restart=on-failure
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=Navidrome
+After=network-online.target
+
+[Service]
+User=navidrome
+Group=navidrome
+WorkingDirectory=/opt/navidrome
+ExecStart=/opt/navidrome/navidrome --configfile /var/lib/navidrome/navidrome.toml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+MusicFolder = "/mnt/media/Music"
+DataFolder = "/var/lib/navidrome"
+Address = "0.0.0.0"
+Port = 4533
+
+[Scanner]
+Schedule = "@every 1h"

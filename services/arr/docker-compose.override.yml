@@ -1,0 +1,5 @@
+services:
+  lidarr:
+    volumes:
+      - /music:/music
+      - /recycle:/recycle

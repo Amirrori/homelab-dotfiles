@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" width="1000" height="430" role="img" aria-label="Hosts: the z440 runs VyOS, gpu-debian, Windows, three hosted VMs and seven containers on a btrfs RAID1 root plus a single music HDD; the t480 runs the Pterodactyl container; the Pi 400 is the cluster's third vote.">
+  <style>
+    text { font-family: "Inter", "IBM Plex Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif; }
+    .bg { fill: #FFFFFF; }
+    .bx { fill: #F3F5F8; stroke: #C3CBD5; }
+    .host { fill: none; stroke: #17202B; stroke-width: 1.4; }
+    .ttl { font-size: 13px; font-weight: 600; fill: #17202B; }
+    .big { font-size: 16px; font-weight: 700; fill: #17202B; }
+    .lbl { font-size: 12px; fill: #17202B; }
+    .sub, .el { font-family: "JetBrains Mono", "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace; }
+    .sub { font-size: 11px; fill: #586473; }
+    .note { font-size: 11.5px; fill: #586473; }
+    .el { font-size: 11px; fill: #586473; paint-order: stroke; stroke: #FFFFFF; stroke-width: 4px; stroke-linejoin: round; }
+    .ed { stroke: #17202B; stroke-width: 1.4; fill: none; }
+    .vl { stroke-width: 2.4; fill: none; }
+    .chip { fill: #FFFFFF; stroke-width: 1.6; }
+    .chip-dash { fill: #FFFFFF; stroke-width: 1.6; stroke-dasharray: 4 3; }
+    .cfg { stroke: #17202B; } .c1520 { stroke: #A86B12; } .c1530 { stroke: #12806A; }
+    .c1540 { stroke: #7444C4; } .c1550 { stroke: #C0365A; }
+  </style>
+  <rect class="bg" width="1000" height="430" rx="8"/>
+
+  <rect class="host" x="20" y="20" width="600" height="390" rx="6"/>
+  <text class="big" x="36" y="46">z440 - node 1</text>
+  <text class="sub" x="36" y="64">10.140.2.100 - Xeon E5-2697 v3 - 64 GB ECC</text>
+  <text class="sub" x="36" y="90">GUESTS</text>
+
+  <rect class="chip cfg" x="36" y="100" width="134" height="26" rx="13"/><text class="lbl" x="50" y="117">1000 VyOS</text>
+  <rect class="chip c1520" x="178" y="100" width="134" height="26" rx="13"/><text class="lbl" x="192" y="117">1010 gpu-debian</text>
+  <rect class="chip-dash c1530" x="320" y="100" width="134" height="26" rx="13"/><text class="lbl" x="334" y="117">1230 windows</text>
+  <rect class="chip c1540" x="462" y="100" width="134" height="26" rx="13"/><text class="lbl" x="476" y="117">1530 hosted VM</text>
+
+  <rect class="chip c1540" x="36" y="134" width="134" height="26" rx="13"/><text class="lbl" x="50" y="151">1540 hosted VM</text>
+  <rect class="chip c1540" x="178" y="134" width="134" height="26" rx="13"/><text class="lbl" x="192" y="151">1550 hosted VM</text>
+  <rect class="chip c1550" x="320" y="134" width="134" height="26" rx="13"/><text class="lbl" x="334" y="151">1200 Torrent</text>
+  <rect class="chip c1550" x="462" y="134" width="134" height="26" rx="13"/><text class="lbl" x="476" y="151">1210 Soulseek</text>
+
+  <rect class="chip c1530" x="36" y="168" width="134" height="26" rx="13"/><text class="lbl" x="50" y="185">1220 navidrome</text>
+  <rect class="chip c1530" x="178" y="168" width="134" height="26" rx="13"/><text class="lbl" x="192" y="185">1240 arr</text>
+  <rect class="chip c1530" x="320" y="168" width="134" height="26" rx="13"/><text class="lbl" x="334" y="185">1260 proxy</text>
+  <rect class="chip c1530" x="462" y="168" width="134" height="26" rx="13"/><text class="lbl" x="476" y="185">1270 presence</text>
+
+  <rect class="chip c1530" x="36" y="202" width="134" height="26" rx="13"/><text class="lbl" x="50" y="219">1280 dns</text>
+  <text class="note" x="178" y="219">dashed = not started at boot</text>
+
+  <text class="sub" x="36" y="262">DISKS</text>
+  <rect class="bx" x="36" y="272" width="170" height="40" rx="4"/>
+  <text class="ttl" x="48" y="289">nvme0n1</text><text class="sub" x="48" y="304">PM981 256 GB</text>
+  <rect class="bx" x="216" y="272" width="170" height="40" rx="4"/>
+  <text class="ttl" x="228" y="289">sda</text><text class="sub" x="228" y="304">860 EVO 250 GB</text>
+  <rect class="bx" x="420" y="272" width="180" height="40" rx="4"/>
+  <text class="ttl" x="432" y="289">sdb</text><text class="sub" x="432" y="304">HGST 500 GB HDD</text>
+
+  <line class="ed" x1="121" y1="312" x2="121" y2="340"/>
+  <line class="ed" x1="301" y1="312" x2="301" y2="340"/>
+  <line class="ed" x1="510" y1="312" x2="510" y2="340"/>
+  <rect class="bx" x="36" y="340" width="350" height="56" rx="4"/>
+  <text class="ttl" x="48" y="360">btrfs RAID1 root</text>
+  <text class="sub" x="48" y="376">OS + guest disks, survives one SSD</text>
+  <text class="sub" x="48" y="390">md127 RAID1 swap behind zswap</text>
+  <rect class="bx" x="420" y="340" width="180" height="56" rx="4"/>
+  <text class="ttl" x="432" y="360">/mnt/media ext4</text>
+  <text class="sub" x="432" y="376">Music, downloads</text>
+  <text class="sub" x="432" y="390">hosted VM data disk</text>
+
+  <rect class="host" x="660" y="20" width="320" height="170" rx="6"/>
+  <text class="big" x="676" y="46">t480 - node 2</text>
+  <text class="sub" x="676" y="64">10.140.2.101 - i7-8650U - 24 GB</text>
+  <text class="sub" x="676" y="90">GUESTS</text>
+  <rect class="chip c1530" x="676" y="100" width="170" height="26" rx="13"/><text class="lbl" x="690" y="117">1250 pterodactyl</text>
+  <rect class="bx" x="676" y="138" width="288" height="40" rx="4"/>
+  <text class="ttl" x="688" y="155">NVMe 512 GB</text><text class="sub" x="688" y="170">btrfs, single disk</text>
+
+  <rect class="host" x="660" y="262" width="320" height="60" rx="6"/>
+  <text class="big" x="676" y="288">Pi 400 - QDevice</text>
+  <text class="sub" x="676" y="308">10.140.2.3 - own power supply</text>
+
+  <line class="vl c1520" x1="620" y1="105" x2="660" y2="105" stroke-dasharray="5 4"/>
+  <line class="vl c1520" x1="620" y1="292" x2="660" y2="292" stroke-dasharray="5 4"/>
+  <line class="vl c1520" x1="820" y1="190" x2="820" y2="262" stroke-dasharray="5 4"/>
+  <text class="el" x="828" y="231">corosync on 1520</text>
+  <text class="note" x="676" y="346">3 votes, quorum 2, no HA</text>
+  <text class="note" x="676" y="364">any one of the three can be down</text>
+</svg>

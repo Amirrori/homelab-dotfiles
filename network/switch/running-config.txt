@@ -1,0 +1,240 @@
+!Current Configuration:
+!System Description "Dell Networking N1524P, 6.8.1.0, Linux 3.6.5, Not Available"
+!System Software Version 6.8.1.0
+!
+configure
+vlan 999,1500,1510,1520,1530,1540,1550
+exit
+vlan 999
+name "BLACKHOLE"
+exit
+vlan 1500
+name "WAN"
+exit
+vlan 1510
+name "HOME-DEVICES"
+exit
+vlan 1520
+name "MGMT"
+exit
+vlan 1530
+name "HOME-VMS"
+exit
+vlan 1540
+name "COMMUNITY"
+exit
+vlan 1550
+name "TORRENT-NL"
+exit
+ip telnet server disable
+hostname "loud-machine"
+slot 1/0 3    ! Dell Networking N1524P
+sntp unicast client enable
+sntp server 10.140.2.1
+stack
+member 1 2    ! N1524P
+exit
+no ip http server
+interface vlan 1
+exit
+interface vlan 1520
+ip address 10.140.2.2 255.255.255.0
+exit
+ip default-gateway 10.140.2.1
+username "media" password <HASH> privilege 15 encrypted
+ip ssh server
+ip ssh pubkey-auth
+spanning-tree priority 4096
+management access-list "MGMT"
+permit ip-source 10.140.1.0 mask 255.255.255.0 priority 1
+permit ip-source 10.140.2.0 mask 255.255.255.0 priority 2
+permit ip-source 10.255.231.100 mask 255.255.255.255 priority 3
+permit ip-source 10.255.231.101 mask 255.255.255.255 priority 4
+permit ip-source 10.255.232.100 mask 255.255.255.255 priority 5
+permit ip-source 10.255.232.101 mask 255.255.255.255 priority 6
+permit ip-source 10.255.235.100 mask 255.255.255.255 priority 7
+permit ip-source 10.255.235.101 mask 255.255.255.255 priority 8
+permit ip-source 10.255.236.100 mask 255.255.255.255 priority 9
+permit ip-source 10.255.236.101 mask 255.255.255.255 priority 10
+exit
+management access-class MGMT
+no ip igmp snooping
+no ipv6 mld snooping
+ip dhcp snooping
+ip dhcp snooping vlan 1510
+power inline detection unit 1 dot3at
+!
+interface Gi1/0/1
+no green-mode eee
+ip dhcp snooping trust
+description "z440-eno1"
+spanning-tree disable
+spanning-tree portfast
+switchport mode trunk
+switchport trunk native vlan 999
+switchport trunk allowed vlan 1500,1510,1520,1530,1540,1550
+power inline never
+exit
+!
+interface Gi1/0/2
+no green-mode eee
+description "thinkpad-trunk"
+spanning-tree portfast
+switchport mode trunk
+switchport trunk native vlan 999
+switchport trunk allowed vlan 1500,1510,1520,1530,1550
+power inline never
+exit
+!
+interface Gi1/0/3
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/4
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/5
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/6
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/7
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/8
+description "home-devices"
+spanning-tree portfast
+switchport access vlan 1510
+power inline never
+exit
+!
+interface Gi1/0/9
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/10
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/11
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/12
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/13
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/14
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/15
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/16
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/17
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/18
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/19
+shutdown
+power inline never
+exit
+!
+interface Gi1/0/20
+description "technicolor-wifi-ap"
+spanning-tree portfast
+switchport access vlan 1510
+exit
+!
+interface Gi1/0/21
+description "WAN-ISP-router"
+spanning-tree disable
+spanning-tree portfast
+switchport access vlan 1500
+no lldp transmit
+no lldp med
+power inline never
+exit
+!
+interface Gi1/0/22
+shutdown
+description "unused"
+power inline never
+exit
+!
+interface Gi1/0/23
+description "break-glass-mgmt"
+spanning-tree portfast
+switchport access vlan 1520
+power inline never
+exit
+!
+interface Gi1/0/24
+description "pi400-quorum"
+spanning-tree portfast
+switchport access vlan 1520
+power inline never
+exit
+!
+interface Te1/0/1
+shutdown
+exit
+!
+interface Te1/0/2
+shutdown
+exit
+!
+interface Te1/0/3
+shutdown
+exit
+!
+interface Te1/0/4
+shutdown
+exit
+eula-consent support-assist reject
+exit
+
+

@@ -1,0 +1,16 @@
+# Plain HTTP: redirect the known names to HTTPS, close everything else.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name music.example.com torrent.example.com soulseek.example.com
+                lidarr.example.com soularr.example.com panel.example.com
+                wings.example.com presence.example.com adguard.example.com
+                dns.example.com;
+    return 308 https://$host$request_uri;
+}
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    return 444;
+}

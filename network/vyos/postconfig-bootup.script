@@ -1,0 +1,18 @@
+#!/bin/sh
+# This script is executed at boot time after VyOS configuration is fully applied.
+# Any modifications required to work around unfixed bugs
+# or use services not available through the VyOS CLI system can be placed here.
+
+ip route replace 192.168.1.254/32 \
+    dev eth0 \
+    proto static \
+    src 192.168.1.220 \
+    metric 20
+
+ip route replace default \
+    via 192.168.1.254 \
+    dev eth0 \
+    proto static \
+    src 192.168.1.220 \
+    metric 20 \
+    onlink

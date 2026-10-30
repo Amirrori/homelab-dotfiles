@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 380" width="1020" height="380" role="img" aria-label="Cabling: the ISP router and WiFi access point use access ports on the Dell switch; the z440 and t480 get tagged trunks; the Pi and the break-glass port are on the management VLAN.">
+  <style>
+    text { font-family: "Inter", "IBM Plex Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif; }
+    .bg { fill: #FFFFFF; }
+    .bx { fill: #F3F5F8; stroke: #C3CBD5; }
+    .bx-dash { fill: #F3F5F8; stroke: #C3CBD5; stroke-dasharray: 5 4; }
+    .host { fill: #F3F5F8; stroke: #17202B; stroke-width: 1.4; }
+    .row { fill: #FFFFFF; stroke: #C3CBD5; }
+    .ttl { font-size: 13px; font-weight: 600; fill: #17202B; }
+    .big { font-size: 16px; font-weight: 700; fill: #17202B; }
+    .lbl { font-size: 12px; fill: #17202B; }
+    .sub, .mono, .el { font-family: "JetBrains Mono", "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace; }
+    .sub { font-size: 11px; fill: #586473; }
+    .mono { font-size: 12px; fill: #17202B; }
+    .el { font-size: 11px; fill: #586473; paint-order: stroke; stroke: #FFFFFF; stroke-width: 4px; stroke-linejoin: round; }
+    .ed { stroke: #17202B; stroke-width: 1.4; fill: none; }
+    .trunk { stroke: #17202B; stroke-width: 4; fill: none; }
+    .ah { fill: #17202B; }
+    .vl { stroke-width: 2.4; fill: none; }
+    .c1500 { stroke: #6B7480; } .c1510 { stroke: #2A66D1; } .c1520 { stroke: #A86B12; }
+  </style>
+  <defs>
+    <marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+  </defs>
+  <rect class="bg" width="1020" height="380" rx="8"/>
+
+  <!-- upstream and wireless -->
+  <rect class="bx" x="20" y="20" width="250" height="36" rx="4"/>
+  <text class="ttl" x="145" y="43" text-anchor="middle">Internet</text>
+  <line class="ed" x1="145" y1="56" x2="145" y2="90" marker-end="url(#m1)"/>
+  <text class="el" x="155" y="77">fibre</text>
+
+  <rect class="bx" x="20" y="92" width="250" height="36" rx="4"/>
+  <text class="ttl" x="32" y="114">ISP router</text>
+  <text class="sub" x="260" y="114" text-anchor="end">192.168.1.254</text>
+
+  <rect class="bx" x="20" y="136" width="250" height="36" rx="4"/>
+  <text class="ttl" x="32" y="158">Technicolor WiFi AP</text>
+
+  <line class="ed" x1="145" y1="172" x2="145" y2="232" marker-end="url(#m1)"/>
+  <text class="el" x="155" y="207">WiFi</text>
+  <rect class="bx" x="20" y="236" width="250" height="36" rx="4"/>
+  <text class="ttl" x="32" y="258">Phone, laptop</text>
+  <text class="sub" x="260" y="258" text-anchor="end">DHCP .100-.199</text>
+
+  <line class="vl c1500" x1="270" y1="110" x2="380" y2="110"/>
+  <text class="el" x="325" y="102" text-anchor="middle">access 1500</text>
+  <line class="vl c1510" x1="270" y1="154" x2="380" y2="154"/>
+  <text class="el" x="325" y="146" text-anchor="middle">access 1510</text>
+
+  <!-- switch -->
+  <rect class="host" x="370" y="20" width="230" height="340" rx="6"/>
+  <text class="big" x="385" y="46">loud-machine</text>
+  <text class="sub" x="385" y="64">Dell N1524P - 10.140.2.2</text>
+  <rect class="row" x="380" y="94" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="114">Gi1/0/21</text><text class="lbl" x="580" y="114" text-anchor="end">WAN</text>
+  <rect class="row" x="380" y="138" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="158">Gi1/0/20</text><text class="lbl" x="580" y="158" text-anchor="end">WiFi AP (PoE)</text>
+  <rect class="row" x="380" y="182" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="202">Gi1/0/1</text><text class="lbl" x="580" y="202" text-anchor="end">z440</text>
+  <rect class="row" x="380" y="226" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="246">Gi1/0/2</text><text class="lbl" x="580" y="246" text-anchor="end">t480</text>
+  <rect class="row" x="380" y="270" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="290">Gi1/0/24</text><text class="lbl" x="580" y="290" text-anchor="end">Pi 400</text>
+  <rect class="row" x="380" y="314" width="210" height="32" rx="3"/>
+  <text class="mono" x="390" y="334">Gi1/0/23</text><text class="lbl" x="580" y="334" text-anchor="end">break-glass</text>
+
+  <!-- servers -->
+  <line class="trunk" x1="590" y1="198" x2="790" y2="198"/>
+  <text class="el" x="690" y="190" text-anchor="middle">tagged 1500-1550</text>
+  <line class="trunk" x1="590" y1="242" x2="790" y2="242"/>
+  <text class="el" x="690" y="234" text-anchor="middle">tagged, no 1540</text>
+  <line class="vl c1520" x1="590" y1="286" x2="790" y2="286"/>
+  <text class="el" x="690" y="278" text-anchor="middle">access 1520</text>
+  <line class="vl c1520" x1="590" y1="330" x2="790" y2="330" stroke-dasharray="6 4"/>
+  <text class="el" x="690" y="322" text-anchor="middle">access 1520, spare</text>
+
+  <rect class="bx" x="790" y="180" width="210" height="36" rx="4"/>
+  <text class="ttl" x="802" y="202">z440 (eno1)</text><text class="sub" x="990" y="202" text-anchor="end">10.140.2.100</text>
+  <rect class="bx" x="790" y="224" width="210" height="36" rx="4"/>
+  <text class="ttl" x="802" y="246">t480</text><text class="sub" x="990" y="246" text-anchor="end">10.140.2.101</text>
+  <rect class="bx" x="790" y="268" width="210" height="36" rx="4"/>
+  <text class="ttl" x="802" y="290">Pi 400</text><text class="sub" x="990" y="290" text-anchor="end">10.140.2.3</text>
+  <rect class="bx-dash" x="790" y="312" width="210" height="36" rx="4"/>
+  <text class="ttl" x="802" y="334">break-glass</text><text class="sub" x="990" y="334" text-anchor="end">10.140.2.250</text>
+</svg>

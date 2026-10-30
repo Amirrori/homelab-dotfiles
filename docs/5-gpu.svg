@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="1000" height="240" role="img" aria-label="GPU custody: gpu-debian holds the GPU by default; starting Windows makes the hookscript shut gpu-debian down first; stopping Windows makes it start gpu-debian again.">
+  <style>
+    text { font-family: "Inter", "IBM Plex Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif; }
+    .bg { fill: #FFFFFF; }
+    .bx { fill: #F3F5F8; stroke-width: 1.6; }
+    .ttl { font-size: 13px; font-weight: 600; fill: #17202B; }
+    .lbl { font-size: 12px; fill: #17202B; }
+    .sub, .el { font-family: "JetBrains Mono", "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace; }
+    .sub { font-size: 11px; fill: #586473; }
+    .el { font-size: 11px; fill: #586473; paint-order: stroke; stroke: #FFFFFF; stroke-width: 4px; stroke-linejoin: round; }
+    .ed { stroke: #17202B; stroke-width: 1.4; fill: none; }
+    .ah { fill: #17202B; }
+    .c1520 { stroke: #A86B12; } .c1530 { stroke: #12806A; }
+  </style>
+  <defs>
+    <marker id="m5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+  </defs>
+  <rect class="bg" width="1000" height="240" rx="8"/>
+
+  <rect class="bx c1520" x="60" y="72" width="300" height="90" rx="4"/>
+  <text class="ttl" x="76" y="98">gpu-debian - VM 1010</text>
+  <text class="lbl" x="76" y="120">holds the GPU with the nvidia driver</text>
+  <text class="sub" x="76" y="142">default - starts at boot</text>
+
+  <rect class="bx c1530" x="640" y="72" width="300" height="90" rx="4"/>
+  <text class="ttl" x="656" y="98">windows - VM 1230</text>
+  <text class="lbl" x="656" y="120">holds the GPU while gaming</text>
+  <text class="sub" x="656" y="142">started by hand - Sunshine</text>
+
+  <path class="ed" d="M360,92 C450,36 550,36 638,92" marker-end="url(#m5)"/>
+  <text class="el" x="500" y="34" text-anchor="middle">Windows starts: hookscript shuts 1010 down first (&lt;= 90 s)</text>
+  <path class="ed" d="M640,142 C550,198 450,198 362,142" marker-end="url(#m5)"/>
+  <text class="el" x="500" y="214" text-anchor="middle">Windows stops: hookscript starts 1010 ~5 s later</text>
+</svg>

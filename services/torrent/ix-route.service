@@ -1,0 +1,14 @@
+[Unit]
+Description=IX route 10/8 via mgmt gw
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+RestartSec=3
+Type=oneshot
+ExecStart=/usr/sbin/ip route replace 10.0.0.0/8 via 10.140.3.1
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

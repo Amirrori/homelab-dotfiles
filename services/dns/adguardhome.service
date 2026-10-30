@@ -1,0 +1,36 @@
+[Unit]
+Description=AdGuard Home (DNS filter, upstream for pdns-recursor)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=adguardhome
+Group=adguardhome
+WorkingDirectory=/var/lib/adguardhome
+ExecStart=/opt/AdGuardHome/AdGuardHome --no-check-update --no-permcheck --web-addr 10.140.3.53:3000 -c /var/lib/adguardhome/AdGuardHome.yaml -w /var/lib/adguardhome
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectSystem=strict
+ReadWritePaths=/var/lib/adguardhome
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

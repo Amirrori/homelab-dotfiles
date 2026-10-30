@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450" role="img" aria-label="Music pipeline: slskd and qBittorrent download over the NL tunnel onto the HDD; Soularr and Lidarr import into the Music folder; navidrome reads and streams it; play events go to the presence bridge, which sets a Discord status.">
+  <style>
+    text { font-family: "Inter", "IBM Plex Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif; }
+    .bg { fill: #FFFFFF; }
+    .bx { fill: #F3F5F8; stroke: #C3CBD5; }
+    .zone { fill: #F3F5F8; stroke: #C0365A; stroke-width: 1.6; }
+    .grp { fill: none; stroke: #9AA6B4; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .ttl { font-size: 13px; font-weight: 600; fill: #17202B; }
+    .sub, .el { font-family: "JetBrains Mono", "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace; }
+    .sub { font-size: 11px; fill: #586473; }
+    .note { font-size: 11.5px; fill: #586473; }
+    .el { font-size: 11px; fill: #586473; paint-order: stroke; stroke: #FFFFFF; stroke-width: 4px; stroke-linejoin: round; }
+    .ed { stroke: #17202B; stroke-width: 1.4; fill: none; }
+    .ah { fill: #17202B; }
+    .vl { stroke-width: 2.4; fill: none; }
+    .c1550 { stroke: #C0365A; } .t1550 { fill: #C0365A; }
+  </style>
+  <defs>
+    <marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+    <marker id="m4r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="t1550"/></marker>
+  </defs>
+  <rect class="bg" width="1000" height="450" rx="8"/>
+
+  <rect class="zone" x="20" y="30" width="170" height="130" rx="4"/>
+  <text class="ttl" x="34" y="54">P2P networks</text>
+  <text class="sub" x="34" y="72">Soulseek, BitTorrent</text>
+  <text class="note" x="34" y="100">reached only through</text>
+  <text class="note" x="34" y="116">the core-nl tunnel</text>
+
+  <line class="vl c1550" x1="190" y1="55" x2="258" y2="55" marker-start="url(#m4r)" marker-end="url(#m4r)"/>
+  <text class="el" x="224" y="47" text-anchor="middle">NL</text>
+  <line class="vl c1550" x1="190" y1="135" x2="258" y2="135" marker-start="url(#m4r)" marker-end="url(#m4r)"/>
+  <text class="el" x="224" y="127" text-anchor="middle">NL</text>
+
+  <rect class="bx" x="260" y="30" width="180" height="50" rx="4"/>
+  <text class="ttl" x="272" y="51">slskd - CT 1210</text><text class="sub" x="272" y="68">10.140.3.11</text>
+  <rect class="bx" x="260" y="110" width="120" height="50" rx="4"/>
+  <text class="ttl" x="272" y="131">qBittorrent</text><text class="sub" x="272" y="148">CT 1200</text>
+
+  <rect class="bx" x="520" y="30" width="200" height="50" rx="4"/>
+  <text class="ttl" x="532" y="51">Soularr + Lidarr</text><text class="sub" x="532" y="68">CT 1240 - 10.140.3.14</text>
+  <line class="ed" x1="520" y1="55" x2="442" y2="55" marker-end="url(#m4)"/>
+  <text class="el" x="481" y="47" text-anchor="middle">API - 5 min</text>
+
+  <rect class="bx" x="790" y="30" width="190" height="50" rx="4"/>
+  <text class="ttl" x="802" y="51">navidrome - CT 1220</text><text class="sub" x="802" y="68">music.example.com</text>
+
+  <!-- disk -->
+  <rect class="grp" x="250" y="220" width="490" height="110" rx="6"/>
+  <text class="ttl" x="264" y="242">sdb - /mnt/media - one HDD</text>
+  <rect class="bx" x="264" y="256" width="180" height="56" rx="4"/>
+  <text class="ttl" x="276" y="278">slskd_downloads</text><text class="sub" x="276" y="296">raw downloads</text>
+  <rect class="bx" x="520" y="256" width="200" height="56" rx="4"/>
+  <text class="ttl" x="532" y="278">Music</text><text class="sub" x="532" y="296">Artist/Album/track</text>
+
+  <line class="ed" x1="420" y1="80" x2="420" y2="254" marker-end="url(#m4)"/>
+  <text class="el" x="428" y="176">writes</text>
+  <line class="ed" x1="320" y1="160" x2="320" y2="218" marker-end="url(#m4)"/>
+  <text class="el" x="328" y="196">writes</text>
+  <line class="ed" x1="444" y1="284" x2="518" y2="284" marker-end="url(#m4)"/>
+  <text class="el" x="481" y="276" text-anchor="middle">move</text>
+  <line class="ed" x1="620" y1="80" x2="620" y2="254" marker-end="url(#m4)"/>
+  <text class="el" x="628" y="176">imports</text>
+
+  <path class="ed" d="M720,284 H885 V82" marker-end="url(#m4)"/>
+  <text class="el" x="877" y="172" text-anchor="end">reads: watcher</text>
+  <text class="el" x="877" y="188" text-anchor="end">+ hourly scan</text>
+
+  <!-- smb -->
+  <line class="ed" x1="365" y1="332" x2="365" y2="378" marker-start="url(#m4)" marker-end="url(#m4)"/>
+  <text class="el" x="373" y="360">laptop, Windows</text>
+  <rect class="bx" x="250" y="380" width="230" height="50" rx="4"/>
+  <text class="ttl" x="262" y="401">Samba share on the z440</text><text class="sub" x="262" y="418">smb://10.140.2.100/media</text>
+
+  <!-- presence -->
+  <line class="ed" x1="950" y1="80" x2="950" y2="378" marker-end="url(#m4)"/>
+  <text class="el" x="942" y="232" text-anchor="end">signed play</text>
+  <text class="el" x="942" y="248" text-anchor="end">events</text>
+  <rect class="bx" x="790" y="380" width="190" height="50" rx="4"/>
+  <text class="ttl" x="802" y="401">presence - CT 1270</text><text class="sub" x="802" y="418">status bridge</text>
+  <line class="ed" x1="790" y1="405" x2="732" y2="405" marker-end="url(#m4)"/>
+  <text class="el" x="761" y="397" text-anchor="middle">status</text>
+  <rect class="bx" x="560" y="380" width="170" height="50" rx="4"/>
+  <text class="ttl" x="572" y="401">Discord</text><text class="sub" x="572" y="418">Social SDK, OAuth</text>
+</svg>

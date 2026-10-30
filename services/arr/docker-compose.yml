@@ -1,0 +1,30 @@
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    user: 1000:1000
+    hostname: lidarr
+    environment:
+      - TZ=Etc/UTC
+    volumes:
+      - /opt/arr/lidarr:/config
+      - /downloads:/downloads
+    ports:
+      - "8686:8686"
+    restart: unless-stopped
+
+  soularr:
+    image: mrusse08/soularr:latest
+    container_name: soularr
+    hostname: soularr
+    user: 1000:1000
+    environment:
+      - TZ=Etc/UTC
+      - SCRIPT_INTERVAL=300
+      - WEBUI_ENABLED=true
+    ports:
+      - "8265:8265"
+    volumes:
+      - /downloads:/downloads
+      - /opt/arr/soularr:/data
+    restart: unless-stopped

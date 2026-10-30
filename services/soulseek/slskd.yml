@@ -1,0 +1,26 @@
+directories:
+  incomplete: /home/media/slskd/incomplete
+  downloads: /mnt/media/slskd_downloads
+
+shares:
+  directories:
+    - /mnt/media/Music/
+
+web:
+  ip_address: 10.140.3.11
+  https:
+    disabled: true
+  authentication:
+    username: <username>
+    password: <password>
+    api_keys:
+      soularr:
+        key: <api-key>
+        role: readwrite
+        cidr: 10.140.3.14/32
+
+soulseek:
+  username: <username>
+  password: <password>
+  listenPort: 20027
+

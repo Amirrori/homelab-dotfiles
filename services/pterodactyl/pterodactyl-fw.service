@@ -1,0 +1,14 @@
+[Unit]
+Description=Pterodactyl CT firewall (INPUT + DOCKER-USER)
+DefaultDependencies=no
+Wants=network-pre.target
+Before=network-pre.target docker.service wings.service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/pterodactyl-fw.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="1000" height="400" role="img" aria-label="Routing: five internal VLANs meet in the VyOS default-drop forward filter; VyOS exits to the internet through the ISP router and to IX through three IPsec tunnels; VLAN 1550 is policy-routed to the Netherlands tunnel.">
+  <style>
+    text { font-family: "Inter", "IBM Plex Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif; }
+    .bg { fill: #FFFFFF; }
+    .bx { fill: #F3F5F8; stroke: #C3CBD5; }
+    .zone { fill: #F3F5F8; stroke-width: 1.6; }
+    .host { fill: #F3F5F8; stroke: #17202B; stroke-width: 1.4; }
+    .ttl { font-size: 13px; font-weight: 600; fill: #17202B; }
+    .big { font-size: 16px; font-weight: 700; fill: #17202B; }
+    .lbl { font-size: 12px; fill: #17202B; }
+    .sub, .el { font-family: "JetBrains Mono", "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace; }
+    .sub { font-size: 11px; fill: #586473; }
+    .note { font-size: 11.5px; fill: #586473; }
+    .el { font-size: 11px; fill: #586473; paint-order: stroke; stroke: #FFFFFF; stroke-width: 4px; stroke-linejoin: round; }
+    .ed { stroke: #17202B; stroke-width: 1.4; fill: none; }
+    .ah { fill: #17202B; }
+    .vl { stroke-width: 2.4; fill: none; }
+    .c1500 { stroke: #6B7480; } .c1510 { stroke: #2A66D1; } .c1520 { stroke: #A86B12; }
+    .c1530 { stroke: #12806A; } .c1540 { stroke: #7444C4; } .c1550 { stroke: #C0365A; }
+    .t1510 { fill: #2A66D1; } .t1520 { fill: #A86B12; } .t1530 { fill: #12806A; }
+    .t1540 { fill: #7444C4; } .t1550 { fill: #C0365A; }
+  </style>
+  <defs>
+    <marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+    <marker id="m2r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="t1550"/></marker>
+  </defs>
+  <rect class="bg" width="1000" height="400" rx="8"/>
+
+  <!-- zones -->
+  <rect class="zone c1510" x="20" y="20" width="310" height="56" rx="4"/>
+  <text class="ttl" x="34" y="40"><tspan class="t1510">1510</tspan> - Devices</text>
+  <text class="sub" x="34" y="56">10.140.1.0/24</text>
+  <text class="note" x="34" y="70">laptop, iPhone, WiFi clients</text>
+
+  <rect class="zone c1520" x="20" y="96" width="310" height="56" rx="4"/>
+  <text class="ttl" x="34" y="116"><tspan class="t1520">1520</tspan> - Management</text>
+  <text class="sub" x="34" y="132">10.140.2.0/24</text>
+  <text class="note" x="34" y="146">PVE nodes, switch, Pi, gpu-debian</text>
+
+  <rect class="zone c1530" x="20" y="172" width="310" height="56" rx="4"/>
+  <text class="ttl" x="34" y="192"><tspan class="t1530">1530</tspan> - Services</text>
+  <text class="sub" x="34" y="208">10.140.3.0/24</text>
+  <text class="note" x="34" y="222">media, proxy, DNS, Windows, games</text>
+
+  <rect class="zone c1540" x="20" y="248" width="310" height="56" rx="4"/>
+  <text class="ttl" x="34" y="268"><tspan class="t1540">1540</tspan> - Community</text>
+  <text class="sub" x="34" y="284">10.140.4.0/24</text>
+  <text class="note" x="34" y="298">hosted VMs (community)</text>
+
+  <rect class="zone c1550" x="20" y="324" width="310" height="56" rx="4"/>
+  <text class="ttl" x="34" y="344"><tspan class="t1550">1550</tspan> - Torrent-NL</text>
+  <text class="sub" x="34" y="360">10.140.5.0/24</text>
+  <text class="note" x="34" y="374">second legs of Torrent + Soulseek</text>
+
+  <line class="vl c1510" x1="330" y1="48" x2="440" y2="48"/><text class="el" x="385" y="41" text-anchor="middle">eth1</text>
+  <line class="vl c1520" x1="330" y1="124" x2="440" y2="124"/><text class="el" x="385" y="117" text-anchor="middle">eth2</text>
+  <line class="vl c1530" x1="330" y1="200" x2="440" y2="200"/><text class="el" x="385" y="193" text-anchor="middle">eth3</text>
+  <line class="vl c1540" x1="330" y1="276" x2="440" y2="276"/><text class="el" x="385" y="269" text-anchor="middle">eth4</text>
+  <line class="vl c1550" x1="330" y1="352" x2="440" y2="352"/><text class="el" x="385" y="345" text-anchor="middle">eth5</text>
+
+  <!-- router -->
+  <rect class="host" x="440" y="20" width="170" height="360" rx="6"/>
+  <text class="big" x="525" y="48" text-anchor="middle">VyOS</text>
+  <text class="sub" x="525" y="66" text-anchor="middle">VM 1000 - gw .1</text>
+  <text class="lbl" x="525" y="100" text-anchor="middle">forward filter,</text>
+  <text class="lbl" x="525" y="116" text-anchor="middle">default drop</text>
+  <text class="lbl" x="525" y="146" text-anchor="middle">NAT on eth0</text>
+  <text class="lbl" x="525" y="176" text-anchor="middle">iBGP AS 65000</text>
+  <text class="lbl" x="525" y="206" text-anchor="middle">DHCP on 1510</text>
+  <path class="vl c1550" d="M440,352 C520,352 530,240 610,240" stroke-dasharray="6 4" marker-end="url(#m2r)"/>
+  <text class="note" x="560" y="318" text-anchor="middle">policy route</text>
+  <text class="note" x="560" y="333" text-anchor="middle">table 140</text>
+
+  <!-- exits -->
+  <line class="vl c1500" x1="610" y1="48" x2="700" y2="48"/><text class="el" x="655" y="41" text-anchor="middle">eth0</text>
+  <rect class="zone c1500" x="700" y="20" width="280" height="56" rx="4"/>
+  <text class="ttl" x="714" y="42">ISP router -> internet</text>
+  <text class="sub" x="714" y="60">192.168.1.220, double NAT</text>
+
+  <line class="ed" x1="610" y1="132" x2="700" y2="132"/><text class="el" x="655" y="125" text-anchor="middle">IPsec</text>
+  <line class="ed" x1="610" y1="186" x2="700" y2="186"/><text class="el" x="655" y="179" text-anchor="middle">IPsec</text>
+  <line class="vl c1550" x1="610" y1="240" x2="700" y2="240" stroke-dasharray="6 4"/><text class="el" x="655" y="233" text-anchor="middle">IPsec</text>
+
+  <rect class="bx" x="700" y="110" width="280" height="44" rx="4"/>
+  <text class="ttl" x="714" y="128">core-de</text><text class="sub" x="714" y="144">vti84 - local-pref 770</text>
+  <rect class="bx" x="700" y="164" width="280" height="44" rx="4"/>
+  <text class="ttl" x="714" y="182">core-fr</text><text class="sub" x="714" y="198">vti85 - local-pref 780, preferred</text>
+  <rect class="zone c1550" x="700" y="218" width="280" height="44" rx="4"/>
+  <text class="ttl" x="714" y="236">core-nl</text><text class="sub" x="714" y="252">vti86 - 760 - torrent exit</text>
+
+  <path class="ed" d="M980,132 H992 V328 H984" marker-end="url(#m2)"/>
+  <line class="ed" x1="980" y1="186" x2="992" y2="186"/>
+  <line class="ed" x1="980" y1="240" x2="992" y2="240"/>
+  <rect class="bx" x="700" y="300" width="280" height="56" rx="4"/>
+  <text class="ttl" x="714" y="322">IX - 10.0.0.0/8</text>
+  <text class="sub" x="714" y="340">other members - RAS remote access</text>
+</svg>

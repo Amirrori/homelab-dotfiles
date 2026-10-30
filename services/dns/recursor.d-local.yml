@@ -1,0 +1,39 @@
+# Home site config, 2026-10-28
+incoming:
+  listen:
+    - 10.140.3.53
+    - fd66:140:0:3::53
+  allow_from:
+    - 127.0.0.0/8
+    - 10.140.1.0/24          # HOME devices (1510)
+    - 10.140.2.0/24          # MGMT (1520)
+    - 10.140.3.0/24          # Services (1530)
+    - 10.255.231.100/32      # RAS de
+    - 10.255.231.101/32
+    - 10.255.232.100/32      # RAS us
+    - 10.255.232.101/32
+    - 10.255.235.100/32      # RAS fr
+    - 10.255.235.101/32
+    - 10.255.236.100/32      # RAS nl
+    - 10.255.236.101/32
+    - ::1/128
+    - fd66:140:0:1::/64      # devices (1510)
+    - fd66:140:0:2::/64      # MGMT (1520)
+    - fd66:140:0:3::/64      # Services (1530)
+recursor:
+  forward_zones:             # authoritative data, no recursion
+    - zone: home.arpa
+      forwarders: [127.0.0.1:5300]
+    - zone: 140.10.in-addr.arpa
+      forwarders: [127.0.0.1:5300]
+    - zone: 0.0.0.0.0.4.1.0.6.6.d.f.ip6.arpa
+      forwarders: [127.0.0.1:5300]
+  forward_zones_recurse:     # everything else via AdGuard Home
+    - zone: .
+      forwarders: [127.0.0.1:5353]
+dnssec:
+  # off (not process-no-validate): in the process modes the Recursor sets
+  # the CD bit, so Quad9 skips validation. With off, Quad9 validates and
+  # returns SERVFAIL for bogus names; AdGuard blocks and the unsigned .home.arpa
+  # zone work. Tested 2026-10-28 with dnssec-failed.org.
+  validation: off

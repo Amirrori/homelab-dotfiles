@@ -1,0 +1,11 @@
+# Never commit real secrets or live state
+.env
+*.env.local
+*.key
+*.pem
+*.crt
+*.p12
+*.sqlite3
+*.db
+secrets/
+raw/

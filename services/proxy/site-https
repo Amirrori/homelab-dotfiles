@@ -1,0 +1,111 @@
+# HTTPS sites, 2026-10-28. Managed by hand.
+# Adding a site: DNS A -> 10.140.3.16, -d in lego-renew.sh, a server block
+# here + the name in site-http, nginx -t, reload.
+
+# Unknown names: no certificate, handshake refused.
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    ssl_reject_handshake on;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name music.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.12:4533; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name torrent.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.10:8080; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name soulseek.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.11:5030; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name lidarr.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.14:8686; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name soularr.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.14:8265; }
+}
+
+# Pterodactyl (CT 1250 on node t480)
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name panel.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.15:80; }
+}
+
+# Wings API + console websockets + file manager; Wings enforces its own
+# upload limit.
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name wings.example.com;
+    include snippets/site-tls.conf;
+    client_max_body_size 0;
+    location / { proxy_pass http://10.140.3.15:8080; }
+}
+
+# Discord status bridge (CT 1270): events only from navidrome.
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name presence.example.com;
+    include snippets/site-tls.conf;
+    location ^~ /v1/ {
+        allow 10.140.3.12;
+        deny all;
+        proxy_pass http://10.140.3.17:8090;
+    }
+    location / { proxy_pass http://10.140.3.17:8091; }
+}
+
+# DNS CT 1280
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name adguard.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.53:3000; }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name dns.example.com;
+    include snippets/site-tls.conf;
+    location / { proxy_pass http://10.140.3.53:8080; }
+}
